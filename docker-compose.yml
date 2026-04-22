@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  kimyo-bot:
+    build: .
+    container_name: kimyo-bot
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - bot-data:/app/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  bot-data:
